@@ -3,7 +3,7 @@ import TestFB2 from "./TestFB/TestFB2"
 import { Routes, Route, BrowserRouter } from "react-router-dom"
 function Main() {
     return (
-        <div>
+        <div >
             <BrowserRouter>
             <Routes>
             <Route path="/" element={  <TestFB />} > </Route>

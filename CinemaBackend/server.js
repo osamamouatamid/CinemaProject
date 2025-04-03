@@ -26,8 +26,40 @@ mongoose.connect("mongodb+srv://oussamamouatamid1:yozopaaa@cluster0.3znre.mongod
 const testRoutes = require("./routes/testRoutes")
 app.use("/api/test", testRoutes)
 
+
+
+const episodeRoutes = require('./routes/episodeRoutes')
+app.use('/api/episode', episodeRoutes  )
+
+const sectionRoutes = require('./routes/sectionRoutes')
+app.use('/api/section', sectionRoutes  )
+
+const historyRoutes = require('./routes/historyRoutes')
+app.use('/api/history', historyRoutes  )
+
+const genreRoutes = require('./routes/genreRoutes')
+app.use('/api/genre', genreRoutes  )
+
+const watchlistRoutes = require('./routes/watchlistRoutes')
+app.use('/api/watchlist', watchlistRoutes  )
+
+const movieRoutes = require('./routes/movieRoutes')
+app.use('/api/movie', movieRoutes  )
+
+const userRoutes = require('./routes/userRoutes')
+app.use('/api/user', userRoutes  )
+
+const seasonRoutes = require('./routes/seasonRoutes')
+app.use('/api/season', seasonRoutes  )
+
+const showRoutes = require('./routes/showRoutes')
+app.use('/api/show', showRoutes )
+
+
+
 const authRoutes = require('./routes/authRoutes')
 app.use('/api/auth', authRoutes)
+
 app.listen(PORT,()=>
 console.log(`server connected to ${PORT}`))
 

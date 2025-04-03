@@ -1,5 +1,5 @@
 import { useEffect, useState,useParams } from "react"
-import { testService } from "../../services/api"
+import { testService, userService } from "../../services/api"
 import axios from "axios"
 import Swal from "sweetalert2"
 import { Link } from "react-router-dom"
@@ -16,7 +16,7 @@ function TestFB() {
     useEffect(()=>{
         const fetchdata = async () =>{
             try{
-                const response = await testService.getalltests();
+                const response = await userService.getallusers();
                 setUser(response)
             }
             catch(err) {
@@ -48,7 +48,7 @@ const handlesubmit = async (e) =>{
 
 const deleted = async (_id) => {
     try{
-         await testService.deletetest(_id)
+         await testService.deletealltests()
         const response = await testService.getalltests();
         setUser(response);
         showalertdelete()
@@ -134,7 +134,7 @@ function showalertFillerror(){
                 {user.map(e=>(
                    <tr key={e._id}>
                    <td className="border border-gray-300 px-4 py-2"><Link to={`/test/${e._id}`}> {e.username}</Link></td>
-                    <td className="border border-gray-300 px-4 py-2">{e.age}</td>
+                    <td className="border border-gray-300 px-4 py-2">{ new Date() - new Date(e.dateOfBirth) }</td>
                     <td className="border border-gray-300 px-4 py-2"><button onClick={()=>deleted(e._id)} className="p-2 rounded border border-gray-500 bg-red-600 text-gray-100 text-center hover:bg-blue-400 hover:text-gray-900">Delete</button> </td>
                     <td  className="border border-gray-300 px-4 py-2"><button onClick={()=>editt(e._id, e.username,e.age)} className="p-2 rounded border border-gray-500 bg-yellow-500 text-gray-100 text-center hover:bg-blue-400 hover:text-gray-900">Edit</button> </td>
 

@@ -17,7 +17,17 @@ res.status(500).json({error:err.message})
 }
  
 })
-
+router.delete('/', async (req,res)=> {
+    try {
+        const deletedusers = await Test.deleteMany() 
+    
+ 
+         res.status(200).json(deletedusers)
+     }
+     catch (err) {
+         res.status(500).json({ err })
+     }
+})
 router.post('/', async (req,res)=>{
     try{
         const newtest = new Test(req.body);
